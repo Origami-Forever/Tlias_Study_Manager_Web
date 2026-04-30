@@ -2,35 +2,37 @@ package com.example.pojo;
 
 import lombok.Data;
 
-/**
- * 后端统一返回结果
- */
 @Data
-public class Result {
-    private Integer code; //编码：1成功，0为失败
-    private String msg; //错误信息
-    private Object data; //数据
+public class Result<T> {
+    // 响应码 1成功 0失败
+    private Integer code;
+    // 提示信息
+    private String msg;
+    // 响应数据
+    private T data;
 
-    public static Result success() { //成功
-        Result result = new Result();
-        result.code = 1;
-        result.msg = "success";
-        return result;
+    // 成功无数据
+    public static <T> Result<T> success() {
+        Result<T> r = new Result<>();
+        r.setCode(1);
+        r.setMsg("操作成功");
+        return r;
     }
 
-    public static Result success(Object object) { //带数据的成功
-        Result result = new Result();
-        result.data = object;
-        result.code = 1;
-        result.msg = "success";
-        return result;
+    // 成功带数据
+    public static <T> Result<T> success(T data) {
+        Result<T> r = new Result<>();
+        r.setCode(1);
+        r.setMsg("操作成功");
+        r.setData(data);
+        return r;
     }
 
-    public static Result error(String msg) { //报错
-        Result result = new Result();
-        result.data = msg;
-        result.code = 0;
-        result.msg = msg;
-        return result;
+    // 失败
+    public static <T> Result<T> error(String msg) {
+        Result<T> r = new Result<>();
+        r.setCode(0);
+        r.setMsg(msg);
+        return r;
     }
 }
