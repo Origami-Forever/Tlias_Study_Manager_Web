@@ -1,0 +1,29 @@
+# IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# 编译缓存
+*.class
+*.log
+hs_err_pid*
+replay_pid*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 配置本地环境
+application-local.yml
+application-dev.yml
+*.env
